@@ -42,31 +42,34 @@ namespace PDF2IMG
             }
         }
 
-        private async void Grid_Drop(object sender, DragEventArgs e)
+        private void Grid_Drop(object sender, DragEventArgs e)
         {
-                successLabel.Content = "Working, please wait...";
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                int pages = await Task.Run(() => App.Convert(files[0]));
-                ShowSuccessMessage(pages);
+            BeginConvert((string[])e.Data.GetData(DataFormats.FileDrop));
         }
 
-        private async void CustomButton_MouseDown(object sender, MouseButtonEventArgs e)
+        private void CustomButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog()
             {
-                Filter = "PDF documents (.pdf)|*.pdf"
+                Filter = "PDF documents (.pdf)|*.pdf",
+                Multiselect = true
             };
             if (dialog.ShowDialog() == true)
             {
-                successLabel.Content = "Working, please wait...";
-                int pages = await Task.Run(() => App.Convert(dialog.FileName));
-                ShowSuccessMessage(pages);
+                BeginConvert(dialog.FileNames);
             }
         }
 
-        private void ShowSuccessMessage(int pages)
+        private async void BeginConvert(string[] files)
         {
-            successLabel.Content = "Successfully converted " + pages.ToString() + " page(s).";
+            successLabel.Content = "Working, please wait...";
+            int totalPages = 0;
+            foreach (string file in files)
+            {
+                totalPages += await Task.Run(() => App.Convert(file));
+            }
+            successLabel.Content = "Successfully converted " + totalPages.ToString() + 
+                " page(s) in " + files.Count().ToString() + " file(s).";
         }
     }
 }
