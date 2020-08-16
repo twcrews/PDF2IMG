@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PDF2IMG
+namespace Crews.Utility.PDF2IMG
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

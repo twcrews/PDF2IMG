@@ -1,7 +1,7 @@
-﻿<Application x:Class="PDF2IMG.App"
+﻿<Application x:Class="Crews.Utility.PDF2IMG.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PDF2IMG"
+             xmlns:local="clr-namespace:Crews.Utility.PDF2IMG"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

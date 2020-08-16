@@ -12,7 +12,7 @@ using Microsoft.VisualBasic;
 using System.Windows.Input;
 using System.Diagnostics;
 
-namespace PDF2IMG
+namespace Crews.Utility.PDF2IMG
 {
     /// <summary>
     /// Interaction logic for App.xaml
